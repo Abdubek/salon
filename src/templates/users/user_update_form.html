@@ -1,0 +1,111 @@
+{% extends "main.html" %}
+{% load i18n bootstrap4 %}
+
+{% block main-content %}
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                {% trans "Настройки" %}
+            </h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a href="/" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            {% trans "Настройки" %}
+                        </span>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a class="m-nav__link">
+                        <span class="m-nav__link-text">
+                           {% trans "Основные" %}
+                        </span>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="{% url 'salon:detail' object.pk %}" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                           {{ object.full_name }}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="m-content">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="m-portlet m-portlet--tabs">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                {{ object.full_name }}
+                            </h3>
+                        </div>          
+                    </div>
+                    <div class="m-portlet__head-tools">
+                        <ul class="nav nav-tabs m-tabs m-tabs-line  m-tabs-line--right m-tabs-line-danger" role="tablist">
+                            <li class="nav-item m-tabs__item">
+                                <a class="nav-link m-tabs__link active show" data-toggle="tab" href="#m_portlet_tab_1_1" role="tab" aria-selected="true">
+                                    {% trans "Информация" %}
+                                </a>
+                            </li>
+                            <li class="nav-item m-tabs__item">
+                                <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_portlet_tab_1_2" role="tab" aria-selected="false">
+                                    {% trans "Изменение пароля" %}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+                    <div class="tab-content">
+                        <div class="tab-pane active show" id="m_portlet_tab_1_1">
+                            <form class="m-form m-form--fit m-form--label-align-right" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                {% bootstrap_form_errors form type='non_fields' %}
+                                {% bootstrap_form form %}
+
+                                <button class="btn btn-primary" type="submit">
+                                    {% trans "Отправить" %}
+                                </button>
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="m_portlet_tab_1_2">
+                            <form class="m-form m-form--fit m-form--label-align-right" method="post" action="{% url 'user:password' %}">
+                                {% csrf_token %}
+
+                                {% bootstrap_form_errors form type='non_fields' %}
+                                {% bootstrap_form password_form %}
+
+                                <button class="btn btn-primary" type="submit">
+                                    {% trans "Отправить" %}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

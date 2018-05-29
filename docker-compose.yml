@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:10-alpine
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - db-data:/var/lib/postgres/data
+    expose:
+      - "5432"
+    ports:
+      - "127.0.0.1:5438:5432"
+
+  app:
+    build: ./
+    restart: always
+    env_file:
+      - .env
+    working_dir: /opt/beautycrm
+    volumes:
+      - ./src/:/opt/beautycrm
+      - ./src/conf/beautycrmd.conf:/etc/supervisor/conf.d/beautycrmd.conf
+    depends_on:
+      - db
+    links:
+      - db:db
+    expose:
+      - "8000"
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    depends_on:
+      - app
+    ports:
+      - "5010:80"
+    volumes:
+      - ./src/conf/beautycrm_api.conf:/etc/nginx/conf.d/default.conf
+      - ./src/run/static:/static
+      - ./src/media:/media
+    links:
+      - app:app
+
+volumes:
+  db-data:

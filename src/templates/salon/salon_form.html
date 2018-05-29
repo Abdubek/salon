@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n bootstrap4 %}
+
+{% block content %}
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-2" style="background-image: url(/static/metronic/app/media/img/bg/bg-3.jpg);">
+    <div class="m-grid__item m-grid__item--fluid m-login__wrapper">
+        <div class="m-login__container">
+            <div class="m-login__logo">
+                <a href="/">
+                    <img src="/static/img/mini-logo.png">
+                </a>
+            </div>
+            <div class="m-login__signup">
+                <div class="m-login__head">
+                    <h3 class="m-login__title">
+                        {% trans "Информация о салоне" %}
+                    </h3>
+                    <div class="m-login__desc">
+                        {% trans "Введите данные о салоне" %}
+                    </div>
+                </div>
+                <form class="m-login__form m-form" method="post">
+                    {% csrf_token %}
+
+                    {% bootstrap_field form.full_name %}
+                    {% bootstrap_field form.city %}
+                    {% bootstrap_field form.logo %}
+                    
+                    <div class="m-login__form-action">
+                        <button class="btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn" type="submit">
+                            {% trans "Отправить" %}
+                        </button>
+                        &nbsp;&nbsp;
+                        <a href="{% url 'login' %}" class="btn btn-outline-primary m-btn m-btn--pill m-btn--custom m-login__btn">
+                            {% trans "Отмена" %}
+                        </a>
+                    </div>
+                </form>
+            </div> 
+        </div>
+    </div>
+</div>
+
+{% endblock %}

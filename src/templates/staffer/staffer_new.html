@@ -1,0 +1,247 @@
+{% extends "main.html" %}
+{% load i18n bootstrap4 %}
+
+{% block main-content %}
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                {% trans "Настройки" %}
+            </h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a href="/" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            {% trans "Настройки" %}
+                        </span>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="{% url 'staffer:list' %}" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                           {% trans "Сотрудники" %}
+                        </span>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                {% if object %}
+                <li class="m-nav__item">
+                    <a href="{% url 'staffer:detail' object.pk %}" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                           {{ object.full_name }}
+                        </span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="m-nav__item">
+                    <a href="{% url 'staffer:detail' 0 %}" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                           {% trans "Новый сотрудник" %}
+                        </span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="m-content">
+    <div class="row">
+        <div class="col-xl-4">
+            <div class="m-portlet m-portlet--full-height ">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                {% trans "Сотрудники" %}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+                    <div class="m-widget4">
+                        {% for staffer in request.user.salon.staffers.all %}
+                        <div class="m-widget4__item">
+                            <div class="m-widget4__img m-widget4__img--pic">                             
+                                <img src="{{ staffer.avatar_url }}" alt="">   
+                            </div>
+                            <div class="m-widget4__info">
+                                <span class="m-widget4__title">
+                                {{ staffer.full_name }}
+                                </span><br> 
+                                <span class="m-widget4__sub">
+                                {{ staffer.position.title }}
+                                </span>                                  
+                            </div>
+                            <div class="m-widget4__ext">
+                                <a href="{% url 'staffer:detail' staffer.pk %}" class="m-btn m-btn--pill m-btn--hover-brand btn btn-sm btn-secondary">
+                                    {% trans "Информация" %}
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}          
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <div class="m-portlet m-portlet--tabs">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                {% if object %}
+                                    {{ object.full_name }}
+                                {% else %}
+                                    {% trans "Новый сотрудник" %}
+                                {% endif %}
+                            </h3>
+                        </div>          
+                    </div>
+                    <div class="m-portlet__head-tools">
+                        <ul class="nav nav-tabs m-tabs m-tabs-line  m-tabs-line--right m-tabs-line-danger" role="tablist">
+                            <li class="nav-item m-tabs__item">
+                                <a class="nav-link m-tabs__link active show" data-toggle="tab" href="#m_portlet_tab_1_1" role="tab" aria-selected="true">
+                                    {% trans "Информация" %}
+                                </a>
+                            </li>
+                            <li class="nav-item m-tabs__item">
+                                <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_portlet_tab_1_2" role="tab" aria-selected="false">
+                                    {% trans "Доп. инфо" %}
+                                </a>
+                            </li>
+                            <li class="nav-item m-tabs__item">
+                                <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_portlet_tab_1_3" role="tab" aria-selected="false">
+                                    {% trans "Услуги и длительность" %}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+                    <div class="tab-content">
+                        <div class="tab-pane active show" id="m_portlet_tab_1_1">
+                            <form class="m-form m-form--fit m-form--label-align-right" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                {% bootstrap_form_errors form type='non_fields' %}
+                                {% bootstrap_form form %}
+
+                                <button class="btn btn-primary" type="submit">
+                                    {% trans "Отправить" %}
+                                </button>
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="m_portlet_tab_1_2">
+                            {% if object %}
+                            <form class="m-form m-form--fit m-form--label-align-right is-ajax" method="post" action="{% url 'staffer:info' %}">
+                                <input type="hidden" name="staffer" value="{{ object.pk }}">
+                                {% csrf_token %}
+
+                                {% bootstrap_form_errors staffer_info_form type='non_fields' %}
+                                
+                                {% bootstrap_field staffer_info_form.date_of_employment %}
+                                {% bootstrap_field staffer_info_form.phone_number %}
+                                {% bootstrap_field staffer_info_form.gender %}
+                                {% bootstrap_field staffer_info_form.passport_data %}
+                                {% bootstrap_field staffer_info_form.iin %}
+
+                                <button class="btn btn-primary" type="submit">
+                                    {% trans "Отправить" %}
+                                </button>
+                            </form>
+                            {% else %}
+                                {% trans "Сотрудник не добавлен!" %}
+                            {% endif %}
+                        </div>
+                        <div class="tab-pane" id="m_portlet_tab_1_3">
+                            <form action="{% url 'services:add-master' %}" method="post" class="is-ajax">
+                                {% csrf_token %}
+                                <input type="hidden" name="master" value="{{ object.pk }}">
+                                <div class="form-group m-form__group row">
+                                    <div class="col-lg-6">
+                                        <label>{% trans "Услуга" %}</label>
+                                        <select class="form-control m-input" name="service">
+                                            {% for service in services %}
+                                                <option value="{{ service.id }}">
+                                                    {% if request.LANGUAGE_CODE == 'kk' %}
+                                                        {{ service.title_kz }}
+                                                    {% else %}
+                                                        {{ service.title_ru }}
+                                                    {% endif %}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                        <span class="m-form__help">{% trans "Выберите услугу для мастера" %}</span>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>{% trans "Время" %}</label>
+                                        <input type="text" id="service_duration" class="form-control m-input" placeholder="{% trans 'Время' %}" name="duration">
+                                        <span class="m-form__help">{% trans "Средняя длит. услуги(чч:мм)" %}</span>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <label>&nbsp;</label>
+                                        <button type="submit" class="form-control btn btn-success">{% trans "Добавить" %}</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <hr>
+                            <table class="table table-striped m-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>{% trans "Услуга" %}</th>
+                                        <th>{% trans "Длительность" %}</th>
+                                        <th>#</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for service in master_services %}
+                                        <tr>
+                                            <th scope="row">{{ service.service.id }}</th>
+                                            <td>
+                                                <a href="{% url 'services:update' service.service.id %}">
+                                                    {% if request.LANGUAGE_CODE == 'kk' %}
+                                                        {{ service.service.title_kz }}
+                                                    {% else %}
+                                                        {{ service.service.title_ru }}
+                                                    {% endif %}
+                                                </a>
+                                            </td>
+                                            <td>{{ service.duration_hours }}:{{ service.duration_minutes }}</td>
+                                            <td>
+                                                <a  href="{% url 'staffer:del-service' service.id %}"
+                                                    class="m-portlet__nav-link delete-obj"
+                                                    title="Delete"
+                                                    data-title="{% trans 'Вы действительно хотите удалить?' %}"
+                                                    data-text="{% trans 'После удаления невозможно восстановить данные.' %}"
+                                                    >
+                                                    <i class="la la-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

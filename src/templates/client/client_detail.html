@@ -1,0 +1,164 @@
+{% extends "main.html" %}
+{% load i18n %}
+
+{% block main-content %}
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                {% trans "Настройки" %}
+            </h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a href="/" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            {% trans "Настройки" %}
+                        </span>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="{% url 'client:list' request.user.salon.pk %}" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                           {% trans "Клиентская база" %}
+                        </span>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="{% url 'client:detail' object.pk %}" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                           {{ object.full_name }}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="m-content">
+    <div class="row">
+        <div class="col-xl-3 col-lg-4">
+            <div class="m-portlet m-portlet--full-height  ">
+                <div class="m-portlet__body">
+                    <div class="m-card-profile">
+                        <div class="m-card-profile__title m--hide">
+                            {{ object.full_name }}
+                        </div>
+                        <div class="m-card-profile__pic">
+                            <div class="m-card-profile__pic-wrapper">   
+                                <img src="{{ object.avatar_url }}" alt="">
+                            </div>
+                        </div>
+                        <div class="m-card-profile__details">
+                            <span class="m-card-profile__name">{{ object.full_name }}</span>
+                            <a href="call:{{ object.phone }}" class="m-card-profile__email m-link">{{ object.phone }}</a>
+                            {% if object.email %}
+                            <a href="mailto:{{ object.email }}" class="m-card-profile__email m-link">{{ object.email }}</a>
+                            {% endif %}
+                        </div>
+                    </div>  
+                    <div class="m-portlet__body-separator"></div>
+                    <div class="m-widget1 m-widget1--paddingless">
+                        <div class="m-widget1__item">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">{% trans "Прибыль" %}</h3>
+                                    <span class="m-widget1__desc">{% trans "Сумма всех услуг" %}</span>
+                                </div>
+                                <div class="col m--align-right">
+                                    <span class="m-widget1__number m--font-brand">
+                                        +{% if sum_profit %} {{ sum_profit.profit }}₸{% endif%}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-widget1__item">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">{% trans "Услуги" %}</h3>
+                                    <span class="m-widget1__desc">{% trans "Кол. оказ. услуг" %}</span>
+                                </div>
+                                <div class="col m--align-right">
+                                    <span class="m-widget1__number m--font-brand">
+                                        {% if count %} {{ count.services }} {% endif%}
+                                    </span>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>          
+            </div>  
+        </div>
+        <div class="col-xl-9 col-lg-8">
+            <div class="m-portlet m-portlet--full-height m-portlet--tabs">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-tools">
+                        <ul class="nav nav-tabs m-tabs m-tabs-line   m-tabs-line--left m-tabs-line--primary" role="tablist">
+                            <li class="nav-item m-tabs__item">
+                                <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_client_history" role="tab">
+                                    <i class="flaticon-share m--hide"></i>
+                                    {% trans "История посещений" %}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="m_client_history">
+                            <table class="m-datatable" >
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>{% trans "Услуга" %}</th>
+                                        <th>{% trans "Мастер" %}</th>
+                                        <th>{% trans "Время сеанса" %}</th>
+                                        <th>{% trans "Сумма" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for history in histories %}
+                                        <tr>
+                                            <td>{{ history.id }}</td>
+                                            <td>
+                                                <a href="{% url 'services:update' history.service_master.service.id %}">
+                                                    {% if request.LANGUAGE_CODE == 'kk' %}
+                                                        {{ history.service_master.service.title_kz }}
+                                                    {% else %}
+                                                        {{ history.service_master.service.title_ru }}
+                                                    {% endif %}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'staffer:detail' history.service_master.master.id %}">
+                                                    {{ history.service_master.master.full_name }}
+                                                </a>
+                                            </td>
+                                            <td>{{ history.start|date:"d.m.Y H:i" }} - {{ history.end|date:"d.m.Y H:i" }}</td>
+                                            <td>{{ history.amount }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

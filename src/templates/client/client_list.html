@@ -1,0 +1,127 @@
+{% extends "main.html" %}
+{% load i18n %}
+
+{% block main-content %}
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                {% trans "Настройки" %}
+            </h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a href="/" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            {% trans "Настройки" %}
+                        </span>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="{% url 'client:list' request.user.salon.pk %}" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                           {% trans "Клиентская база" %}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="m-content">
+    <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        {% trans "Клиентская база" %}
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet__body">
+
+            <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
+                <div class="row align-items-center">
+                    <div class="col-xl-8 order-2 order-xl-1">
+                        <div class="form-group m-form__group row align-items-center">
+                            <div class="col-md-4">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <input  type="text"
+                                            class="form-control m-input"
+                                            placeholder="{% trans 'Поиск' %}..."
+                                            id="generalSearch">
+                                    <span class="m-input-icon__icon m-input-icon__icon--left">
+                                        <span>
+                                            <i class="la la-search"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                        <a href="{% url 'client:new' %}" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                            <span>
+                                <i class="la la-plus"></i>
+                                <span>
+                                    {% trans "Добавить клиента" %}
+                                </span>
+                            </span>
+                        </a>
+                        <div class="m-separator m-separator--dashed d-xl-none"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <table class="m-datatable staffer-datatable" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>{% trans "Имя" %}</th>
+                        <th>{% trans "Сотовый" %}</th>
+                        <th>{% trans "Email" %}</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for client in object_list %}
+                    <tr>
+                        <td>{{ client.id }}</td>
+                        <td>
+                            <a href="{% url 'client:detail' client.id %}">
+                                {{ client.full_name }}
+                            </a>
+                        </td>
+                        <td>{{ client.phone }}</td>
+                        <td>{{ client.email }}</td>
+                        <td>
+                            <span style="overflow: visible; width: 110px;">
+                                <a href="{% url 'client:update' client.id %}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details">
+                                    <i class="la la-edit"></i>
+                                </a>
+                                <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">
+                                    <i class="la la-trash"></i>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

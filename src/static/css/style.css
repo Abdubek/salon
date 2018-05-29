@@ -1,0 +1,42 @@
+@font-face {
+    font-family: "MSC 300";
+    src: url(../fonts/msc/msc-300.woff) format("woff");
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "MSC 500";
+    src: url(../fonts/msc/msc-500.woff) format("woff");
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "MSC 700";
+    src: url(../fonts/msc/msc-700.woff) format("woff");
+    font-weight: 400;
+    font-style: normal
+}
+
+*, .btn.m-btn--custom, .btn, .form-control {
+    font-family: "MSC 300", Helvetica, Arial, sans-serif;
+}
+
+.m-login.m-login--2.m-login--signin .m-login__signup {
+    display: block;
+}
+
+.m-login.m-login--2 .m-login__wrapper .m-login__container .m-login__logo {
+    text-align: center;
+    margin: 0 auto 2rem auto;
+}
+
+.m-login.m-login--2 .m-login__wrapper .m-login__container .m-login__form {
+    margin: 1rem auto;
+}
+
+.m-portlet .m-portlet__head .m-portlet__head-caption .m-portlet__head-title .m-portlet__head-text,
+.m-subheader .m-subheader__title {
+    font-family: "MSC 500", Helvetica, Arial, sans-serif;
+}

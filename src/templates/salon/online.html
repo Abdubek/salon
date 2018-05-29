@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% load i18n bootstrap4 %}
+
+{% block content %}
+
+<header class="m-grid__item m-header "  data-minimize-offset="200" data-minimize-mobile-offset="200" >
+    <div class="m-container m-container--fluid m-container--full-height">
+        <div class="m-stack m-stack--ver m-stack--desktop">
+            <div class="m-stack__item m-brand  m-brand--skin-light ">
+                <div class="m-stack m-stack--ver m-stack--general">
+                    <div class="m-stack__item m-stack__item--middle m-brand__logo">
+                        <a href="javascript:;" class="m-brand__logo-wrapper">
+                            <img src="/static/metronic/demo/demo6/media/img/logo/logo.png"/>
+                        </a>
+                        <h3 class="m-header__title">
+                            {{ salon.full_name }}
+                        </h3>
+                    </div>
+                    <div class="m-stack__item m-stack__item--middle m-brand__tools">
+                        <a href="javascript:;" id="m_aside_left_offcanvas_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-tablet-and-mobile-inline-block">
+                            <span></span>
+                        </a>
+                        <a id="m_aside_header_topbar_mobile_toggle" href="javascript:;" class="m-brand__icon m--visible-tablet-and-mobile-inline-block">
+                            <i class="flaticon-more"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">
+                <div class="m-header__title">
+                    <h3 class="m-header__title-text">
+                        {{ salon.full_name }} BS CRM
+                    </h3>
+                </div>
+
+                <button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light " id="m_aside_header_menu_mobile_close_btn">
+                    <i class="la la-close"></i>
+                </button>
+
+                <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
+                    <div class="m-stack__item m-topbar__nav-wrapper">
+                        <ul class="m-topbar__nav m-nav m-nav--inline">
+                            <li class="m-nav__item m-topbar__quick-actions m-dropdown m-dropdown--skin-light m-dropdown--large m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push m-dropdown--mobile-full-width m-dropdown--skin-light"  data-dropdown-toggle="click">
+                                <a href="#" class="m-nav__link m-dropdown__toggle">
+                                    <span class="m-nav__link-badge m-badge m-badge--dot m-badge--info m--hide"></span>
+                                    <span class="m-nav__link-icon">
+                                        <span class="m-nav__link-icon-wrapper">
+                                            <i class="la la-language"></i>
+                                        </span>
+                                    </span>
+                                </a>
+
+                                <div class="m-dropdown__wrapper">
+                                    <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+                                    <div class="m-dropdown__inner">
+                                        <div class="m-dropdown__body m-dropdown__body--paddingless">
+                                            <div class="m-dropdown__content">
+                                                <div class="m-scrollable" data-scrollable="false" data-max-height="380" data-mobile-max-height="200">
+                                                    <div class="m-nav-grid m-nav-grid--skin-light">
+                                                        <div class="m-nav-grid__row">
+                                                            {% get_current_language as LANGUAGE_CODE %}
+                                                            {% get_available_languages as LANGUAGES %}
+                                                            {% get_language_info_list for LANGUAGES as languages %}
+                                                            {% for language in languages %}
+                                                                <a href="#" class="m-nav-grid__item language-item" data-lang="{{ language.code }}">
+                                                                    <i class="m-nav-grid__icon flag-icon flag-icon-{% if language.code == 'kk' %}kz{% else %}{{ language.code }}{% endif%}"></i>
+                                                                    <span class="m-nav-grid__text">
+                                                                        {{ language.name_local }} ({{ language.code }})
+                                                                    </span>
+                                                                </a>
+                                                            {% endfor %}
+                                                        </div>
+                                                        <form action="{% url 'set_language' %}" method="post" id="set_language_form">
+                                                            {% csrf_token %}
+                                                            <input name="language" type="hidden" value="{{ LANGUAGE_CODE }}" />
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+    <button class="m-aside-left-close  m-aside-left-close--skin-light " id="m_aside_left_close_btn">
+        <i class="la la-close"></i>
+    </button>
+    <div id="m_aside_left" class="m-grid__item  m-aside-left  m-aside-left--skin-light ">
+        <div 
+            id="m_ver_menu" 
+            class="m-aside-menu m-aside-menu--skin-light m-aside-menu--submenu-skin-light" 
+            data-menu-vertical="true"
+            data-menu-scrollable="true"
+            data-menu-dropdown-timeout="500"  
+            >
+            <ul class="m-menu__nav">
+                <li class="m-menu__item m-menu__item--submenu" aria-haspopup="true">
+                    <a href="{% url 'salon:online' salon.id %}" class="m-menu__link">
+                        <i class="m-menu__link-icon flaticon-edit"></i>
+                        <span class="m-menu__link-text">
+                            {% trans "Онлайн запись" %}
+                        </span>
+                    </a>
+                </li>
+                <li class="m-menu__item m-menu__item--submenu" aria-haspopup="true">
+                    <a href="{% url 'salon:online-history' salon.id %}" class="m-menu__link">
+                        <i class="m-menu__link-icon flaticon-notes"></i>
+                        <span class="m-menu__link-text">
+                            {% trans "История записей" %}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="m-grid__item m-grid__item--fluid m-wrapper">
+        {% block online-container %}
+        <div class="m-content">
+            {% for message in messages %}
+                <div class="m-alert m-alert--icon m-alert--air alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    <div class="m-alert__icon">
+                        <i class="la la-warning"></i>
+                    </div>
+                    <div class="m-alert__text">
+                        {{ message|safe }}
+                    </div>  
+                    <div class="m-alert__close">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>   
+                    </div>              
+                </div>
+            {% endfor %}
+            <div class="m-portlet m-portlet--mobile">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                {% trans "Новый сеанс" %} - {{ salon.full_name }}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+                    <form class="m-form is-ajax" id="new_session_form" method="post" url="">
+                        {% csrf_token %}
+                        <input type="hidden" name="salon" value="{{ salon.id }}">
+                        <div class="form-group m-form__group row">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                <label>{% trans "Ваше имя" %}</label>
+                                <input type="text" class="form-control" placeholder="{% trans 'Ваше полное имя' %}" name="client_name" required>
+                                <span>&nbsp;</span>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                <label for="client_email">Email</label>
+                                <input type="email" class="form-control m-input" id="client_email" placeholder="Email" name="client_email">
+                                <span>&nbsp;</span>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                <label for="client_phone">{% trans "Телефон" %}</label>
+                                <input type="text" class="form-control m-input" id="client_phone" placeholder="{% trans 'Телефон' %}" name="client_phone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group m-form__group row">
+                            <div class="col-lg-4">
+                                <label>{% trans "Сотрудник" %}</label>
+                                <select class="form-control m-input" id="staffer_id" name="staffer_id" required>
+                                    <option value="0">{% trans "Не имеет значения" %}</option>
+                                    {% for staffer in salon.staffers.all %}
+                                    <option value="{{ staffer.id }}">{{ staffer.full_name }}</option>
+                                    {% endfor %}
+                                </select>
+                                <span>&nbsp;</span>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>{% trans "Услуга" %}</label>
+                                <select class="form-control m-input" id="master_services_id" name="service_id" required></select>
+                                <span>&nbsp;</span>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>{% trans "Время" %}</label>
+                                <div class="input-group date">
+                                    <input type="text" class="form-control m-input" id="service_start_datetime" name="start_datetime" readonly required />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="la la-calendar glyphicon-th"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group">
+                            <label>{% trans "Комментарии" %}</label>
+                            <textarea class="form-control m-input" rows="3" name="comment"></textarea>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn btn-success">{% trans "Отправить" %}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}

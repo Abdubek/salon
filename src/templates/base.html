@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+    <meta charset="utf-8" />
+    <title>
+        BEAUTY SALON CRM
+        {% if request.user.is_authenticated %} | {{ request.user.salon.full_name }} {% endif %}
+    </title>
+
+    <meta name="description" content="Latest updates and statistic charts">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.3.0/css/iziToast.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/static/metronic/vendors/custom/fullcalendar/fullcalendar.bundle.css" />
+    <link rel="stylesheet" href="/static/metronic/vendors/base/vendors.bundle.css" />
+    <link rel="stylesheet" href="/static/metronic/demo/demo6/base/style.bundle.css" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+</head>
+<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-light m-aside-left--fixed m-aside-left--offcanvas m-aside-left--minimize m-brand--minimize m-footer--push m-aside--offcanvas-default"  >
+
+    <div class="m-grid m-grid--hor m-grid--root m-page">
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="/static/metronic/vendors/base/vendors.bundle.js"></script>
+    <script src="/static/metronic/demo/demo6/base/scripts.bundle.js"></script>
+    <script src="/static/js/fullcalendar/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.3.0/js/iziToast.min.js"></script>
+    
+    {% if request.LANGUAGE_CODE == 'kk' %}
+    <script src="/static/js/fullcalendar/locale/kk.js"></script>
+    <script src="/static/js/bootstrap-datetimepicker.kk.js"></script>
+    {% else %}
+    <script src="/static/js/fullcalendar/locale/ru.js"></script>
+    <script src="/static/js/bootstrap-datetimepicker.ru.js"></script>
+    {% endif %}
+
+    <script src="/static/js/jquery.inputmask.bundle.js"></script>
+    <script src="/static/js/bootstrap-datetimepicker.ru.js"></script>
+    <script src="/static/js/app.js"></script>
+
+</body>
+</html>

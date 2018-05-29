@@ -1,0 +1,91 @@
+{% extends "main.html" %}
+{% load i18n bootstrap4 %}
+
+{% block main-content %}
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                {% trans "Настройки" %}
+            </h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a href="/" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            {% trans "Настройки" %}
+                        </span>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="{% url 'services:list-category' %}" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                           {% trans "Категория услуг" %}
+                        </span>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    {% trans "Новая услуга" %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="m-content">
+    <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        {% trans "Новая услуга" %}
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet__body">
+            <form class="m-form m-form--fit m-form--label-align-right" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% bootstrap_form_errors form type='non_fields' %}
+                
+                {% bootstrap_field form.title_kz %}
+                {% bootstrap_field form.title_ru %}
+                {% bootstrap_field form.image %}
+                {% bootstrap_field form.min_price %}
+                {% bootstrap_field form.max_price %}
+                
+                <div class="form-group">
+                    <label for="id_category">{% trans "Категория" %}</label>
+                    <select name="category" class="form-control" id="id_category" required="" title="">
+                        <option value="" selected="">---------</option>
+
+                        {% for cat in request.user.salon.service_categories.all %}
+                            <option value="{{ cat.id }}" {% if object.category.id == cat.id %}selected{% endif %}>{{ cat }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {% bootstrap_field form.is_online %}
+
+                <button class="btn btn-primary" type="submit">
+                    {% trans "Отправить" %}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

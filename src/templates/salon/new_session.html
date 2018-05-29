@@ -1,0 +1,93 @@
+{% extends "main.html" %}
+{% load i18n bootstrap4 %}
+
+{% block main-content %}
+
+<div class="m-content">
+    <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        {% trans "Новый сеанс" %}
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet__body">
+            <form class="m-form m-form--fit m-form--label-align-right is-ajax" id="new_session_form" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="salon" value="{{ salon.id }}">
+                <div class="form-group m-form__group row">
+                    <div class="col-lg-6">
+                        <label>{% trans "Имя клиента" %}</label>
+                        <div class="input-group">
+                            <input type="hidden" name="client_id" value="0">
+                            <input type="text" class="form-control" placeholder="{% trans 'Полное имя клиента' %}" name="client_name" required>
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {% trans "Выбрать" %}
+                                </button>
+                                <div class="dropdown-menu" x-placement="top-start">
+                                    <a class="dropdown-item client" href="#" data-id="0" data-name="" data-email="" data-phone="">{% trans "Новый клиент" %}</a>
+                                    {% for client in clients %}
+                                    <a class="dropdown-item client" href="#" data-id="{{ client.id }}" data-name="{{ client.full_name }}" data-email="{{ client.email }}" data-phone="{{ client.phone }}">{{ client.full_name }}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <span class="m-form__help">
+                            {% blocktrans %} Введите имя клиента или выберите справа нажав кнопку "Выбрать".{% endblocktrans %}
+                        </span>
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="client_email">Email</label>
+                        <input type="email" class="form-control m-input" id="client_email" placeholder="Email" name="client_email">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="client_phone">{% trans "Телефон" %}</label>
+                        <input type="text" class="form-control m-input" id="client_phone" placeholder="{% trans 'Телефон' %}" name="client_phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-group m-form__group row">
+                    <div class="col-lg-4">
+                        <label>{% trans "Сотрудник" %}</label>
+                        <select class="form-control m-input" id="staffer_id" name="staffer_id" required>
+                            <option value="0">{% trans "Не имеет значения" %}</option>
+                            {% for staffer in request.user.salon.staffers.all %}
+                            <option value="{{ staffer.id }}">{{ staffer.full_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-lg-4">
+                        <label>{% trans "Услуга" %}</label>
+                        <select class="form-control m-input" id="master_services_id" name="service_id" required></select>
+                    </div>
+                    <div class="col-lg-4">
+                        <label>{% trans "Время" %}</label>
+                        <div class="input-group date">
+                            <input type="text" class="form-control m-input" id="service_start_datetime" name="start_datetime" required />
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="la la-calendar glyphicon-th"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-form__group">
+                    <label>{% trans "Комментарии" %}</label>
+                    <textarea class="form-control m-input" rows="3" name="comment"></textarea>
+                </div>
+                <div class="form-group m-form__group row">
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn btn-success">{% trans "Отправить" %}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

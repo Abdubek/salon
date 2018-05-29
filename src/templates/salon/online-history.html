@@ -1,0 +1,51 @@
+{% extends "salon/online.html" %}
+{% load i18n bootstrap4 %}
+
+{% block online-container %}
+<div class="m-content">
+    <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        {% trans "История посещений" %}
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet__body">
+            <div class="m-widget4">
+                {% if not histories %}
+                    <h4>{% trans "Нет записей" %}</h4>
+                {% endif %}
+
+                {% for history in histories %}
+                    <div class="m-widget4__item">
+                        <div class="m-widget4__img m-widget4__img--logo">                            
+                            <img src="{{ history.service_master.service.logo_url }}" alt="">   
+                        </div>
+                        <div class="m-widget4__info">
+                            <span class="m-widget4__title">
+                                {% if request.LANGUAGE_CODE == 'kk' %}
+                                    {{ history.service_master.service.title_kz }}
+                                {% else %}
+                                    {{ history.service_master.service.title_ru }}
+                                {% endif %}
+                            </span>
+                            <span class="m-widget4__sub">
+                                {% trans "Мастер" %}: {{ history.service_master.master.full_name }}
+                            </span>
+                            <span class="m-widget4__sub">
+                                {% trans "Время сеанса" %}: {{ history.start|date:"d.m.Y H:i" }}
+                            </span>     
+                        </div>
+                        <span class="m-widget4__ext">
+                            <span class="m-widget4__number m--font-brand">&#8376;{{ history.amount }}</span>
+                        </span> 
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

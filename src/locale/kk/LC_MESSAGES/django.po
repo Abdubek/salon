@@ -1,0 +1,759 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-20 19:44+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: beautycrm/settings.py:117
+msgid "Руский"
+msgstr "Орыс тілі"
+
+#: beautycrm/settings.py:118
+msgid "Казахский"
+msgstr "Қазақ тілі"
+
+#: client/models.py:14 staffer/models.py:92
+msgid "Неизвестно"
+msgstr "Белгісіз"
+
+#: client/models.py:15 staffer/models.py:93
+msgid "Мужской"
+msgstr "Еркек"
+
+#: client/models.py:16 staffer/models.py:94
+msgid "Женский"
+msgstr "Әйел"
+
+#: client/models.py:21 staffer/models.py:41
+#: templates/client/client_list.html:92 templates/staffer/staffer_list.html:130
+msgid "Имя"
+msgstr "Толық есімі"
+
+#: client/models.py:25 staffer/models.py:45 users/models.py:14
+msgid "Аватар"
+msgstr "Сурет"
+
+#: client/models.py:36 templates/client/client_list.html:93
+msgid "Сотовый"
+msgstr "Ұялы телефон"
+
+#: client/models.py:40 templates/client/client_list.html:94
+msgid "Email"
+msgstr ""
+
+#: client/models.py:47 staffer/models.py:116
+msgid "Пол"
+msgstr "Жыныс"
+
+#: client/models.py:50
+msgid "Комментарий"
+msgstr "Пікір"
+
+#: client/models.py:72 timetable/models.py:20 timetable/models.py:25
+msgid "Клиент"
+msgstr ""
+
+#: client/models.py:73 templates/main.html:304 templates/main.html:314
+msgid "Клиенты"
+msgstr "Клиенттер"
+
+#: salon/models.py:18
+msgid "Астана"
+msgstr ""
+
+#: salon/models.py:19
+msgid "Aлматы"
+msgstr ""
+
+#: salon/models.py:20
+msgid "Семей"
+msgstr ""
+
+#: salon/models.py:24
+msgid "Название салона"
+msgstr "Салон атауы"
+
+#: salon/models.py:30
+msgid "Город"
+msgstr "Қала"
+
+#: salon/models.py:34
+msgid "Логотип"
+msgstr ""
+
+#: salon/models.py:52 templates/main.html:208 templates/main.html:218
+#: templates/main.html:273 templates/staffer/staffer_list.html:33
+#: templates/staffer/staffer_new.html:33 templates/staffer/staffer_new.html:70
+msgid "Сотрудники"
+msgstr "Қызметкерлер"
+
+#: salon/models.py:58 staffer/models.py:30 templates/main.html:283
+#: templates/staffer/position.html:33 templates/staffer/position.html:48
+#: templates/staffer/position_form.html:33
+msgid "Должности"
+msgstr "Лауазымдар"
+
+#: salon/models.py:64 services/models.py:42
+msgid "Категории"
+msgstr "Санаттар"
+
+#: salon/models.py:80
+msgid "Салон"
+msgstr ""
+
+#: salon/models.py:81
+msgid "Салоны"
+msgstr ""
+
+#: salon/models.py:90
+msgid "Адрес"
+msgstr "Мекен-жай"
+
+#: salon/models.py:96
+msgid "Индекс"
+msgstr ""
+
+#: salon/models.py:101 templates/salon/new_session.html:48
+#: templates/salon/new_session.html:49 templates/salon/online.html:166
+#: templates/salon/online.html:167
+msgid "Телефон"
+msgstr ""
+
+#: salon/models.py:107
+msgid "Сайт"
+msgstr ""
+
+#: salon/models.py:113
+msgid "График работы"
+msgstr "Жұмыс кестесі"
+
+#: salon/models.py:123
+msgid "Контакт"
+msgstr "Байланыс"
+
+#: salon/models.py:124
+msgid "Контакты"
+msgstr "Байланыстар"
+
+#: salon/views.py:91 timetable/views.py:41
+msgid "Выберите рабочий время c 09:00 - 20:00"
+msgstr "Жұмыс уақытын таңдаңыз 09:00 - 20:00"
+
+#: salon/views.py:103 timetable/views.py:52
+msgid "Нет свободных мастер в это время!!!"
+msgstr "Таңдалған уақытта бос мастер жоқ!!!"
+
+#: salon/views.py:108 timetable/views.py:57
+msgid "Время занято другим клиентом!!!"
+msgstr "Таңдалған уақытта бос емес!!!"
+
+#: salon/views.py:128
+msgid "Нет свободных мастеров в это время!!!"
+msgstr "Таңдалған уақытта бос мастерлер жоқ!!!"
+
+#: salon/views.py:147
+#, python-format
+msgid "Сеанс успешно добавлен. Номер заказа <strong>%04d</strong>"
+msgstr "Оналайн жазылым сәтті қосылды. Жазылым номері <strong>%04d</strong>"
+
+#: services/models.py:17 templates/services/category_list.html:148
+msgid "Общие"
+msgstr "Жалпы"
+
+#: services/models.py:18 templates/services/category_list.html:149
+msgid "Мужские"
+msgstr "Ерлерге"
+
+#: services/models.py:19 templates/services/category_list.html:150
+msgid "Женские"
+msgstr "Әйелдерге"
+
+#: services/models.py:24
+msgid "Название категории RUS"
+msgstr "Санат атауы RUS"
+
+#: services/models.py:28
+msgid "Название категории KZ"
+msgstr "Санат атауы KZ"
+
+#: services/models.py:33 templates/services/category_list.html:76
+#: templates/services/category_list.html:146
+msgid "Содержит услуги"
+msgstr "Бұл қызмет"
+
+#: services/models.py:41 services/models.py:57
+#: templates/services/service_form.html:72
+msgid "Категория"
+msgstr "Санат"
+
+#: services/models.py:48
+msgid "Название услуги RUS"
+msgstr "Қызмет атауы RUS"
+
+#: services/models.py:52
+msgid "Название услуги KZ"
+msgstr "Қызмет атауы KZ"
+
+#: services/models.py:61
+msgid "Изображение"
+msgstr "Сурет"
+
+#: services/models.py:71
+msgid "Минимальная цена"
+msgstr "Ең төменгі баға"
+
+#: services/models.py:74
+msgid "Максимальная цена"
+msgstr "Ең жоғары баға"
+
+#: services/models.py:78
+msgid "Онлайн-запись"
+msgstr "Онлайн-жазылу"
+
+#: services/models.py:100 templates/client/client_detail.html:127
+#: templates/salon/new_session.html:64 templates/salon/online.html:183
+#: templates/staffer/staffer_new.html:177
+#: templates/staffer/staffer_new.html:207
+msgid "Услуга"
+msgstr "Қызмет"
+
+#: services/models.py:101 templates/client/client_detail.html:92
+#: templates/main.html:293
+msgid "Услуги"
+msgstr "Қызметтер"
+
+#: services/models.py:114
+msgid "Длительность услуги"
+msgstr "Қызметтің ұзақтығы"
+
+#: services/models.py:128 timetable/models.py:30
+msgid "Услуга мастера"
+msgstr "Шебері қызметі"
+
+#: services/models.py:129
+msgid "Услуги мастеров"
+msgstr "Шеберілердің қызметі"
+
+#: services/views.py:33 services/views.py:50 staffer/views.py:54
+#: staffer/views.py:88
+msgid "Сохранено"
+msgstr "Сақталды"
+
+#: staffer/models.py:14 templates/services/category_detail.html:93
+#: templates/services/category_list.html:75 templates/staffer/position.html:140
+msgid "Название"
+msgstr "Атауы"
+
+#: staffer/models.py:17 staffer/models.py:69 templates/staffer/position.html:93
+#: templates/staffer/position.html:144 templates/staffer/position.html:145
+msgid "Описание"
+msgstr "Сипаттама"
+
+#: staffer/models.py:29 staffer/models.py:57 templates/staffer/position.html:92
+#: templates/staffer/position.html:141 templates/staffer/staffer_list.html:63
+#: templates/staffer/staffer_list.html:131
+msgid "Должность"
+msgstr "Лауазым"
+
+#: staffer/models.py:35
+msgid "Уволен"
+msgstr "Босатылған"
+
+#: staffer/models.py:36
+msgid "Работает"
+msgstr "Жұмыс істейді"
+
+#: staffer/models.py:61 templates/staffer/staffer_list.html:133
+msgid "Специализация"
+msgstr "Мамандығы"
+
+#: staffer/models.py:66 templates/staffer/staffer_list.html:83
+#: templates/staffer/staffer_list.html:129
+msgid "Статус"
+msgstr "Мәртебесі"
+
+#: staffer/models.py:85 staffer/models.py:100
+#: templates/salon/new_session.html:55 templates/salon/online.html:173
+msgid "Сотрудник"
+msgstr "Қызметкер"
+
+#: staffer/models.py:86
+msgid " Сотрудники"
+msgstr "Қызметкерлер"
+
+#: staffer/models.py:105
+msgid "Дата приема на работу"
+msgstr "Жұмысқа орналасқан күні"
+
+#: staffer/models.py:111
+msgid "Номер телефона"
+msgstr "Телефон нөмірі"
+
+#: staffer/models.py:121
+msgid "Паспортные данные"
+msgstr "Паспорт деректері"
+
+#: staffer/models.py:126
+msgid "ИИН"
+msgstr ""
+
+#: staffer/models.py:130
+msgid "Дополнительная информация"
+msgstr "Қосымша ақпарат"
+
+#: staffer/models.py:131
+msgid "Дополнительные информации"
+msgstr "Қосымша ақпараттар"
+
+#: staffer/views.py:106
+msgid "Услуга успешно добавлен для мастера."
+msgstr "Қызмет шеберге сәтті қосылды."
+
+#: templates/client/client_detail.html:9 templates/client/client_detail.html:23
+#: templates/client/client_form.html:9 templates/client/client_form.html:23
+#: templates/client/client_list.html:9 templates/client/client_list.html:23
+#: templates/main.html:243 templates/main.html:253
+#: templates/salon/salon_info.html:9 templates/salon/salon_info.html:23
+#: templates/services/category_detail.html:9
+#: templates/services/category_detail.html:23
+#: templates/services/category_list.html:9
+#: templates/services/category_list.html:23
+#: templates/services/service_form.html:9
+#: templates/services/service_form.html:23 templates/staffer/position.html:9
+#: templates/staffer/position.html:23 templates/staffer/position_form.html:9
+#: templates/staffer/position_form.html:23
+#: templates/staffer/staffer_list.html:9 templates/staffer/staffer_list.html:23
+#: templates/staffer/staffer_new.html:9 templates/staffer/staffer_new.html:23
+#: templates/users/user_update_form.html:9
+#: templates/users/user_update_form.html:23
+msgid "Настройки"
+msgstr "Баптаулар"
+
+#: templates/client/client_detail.html:33 templates/client/client_form.html:33
+#: templates/client/client_list.html:33 templates/client/client_list.html:48
+#: templates/main.html:324
+msgid "Клиентская база"
+msgstr "Клиент деректер қоры"
+
+#: templates/client/client_detail.html:79
+msgid "Прибыль"
+msgstr "Пайда"
+
+#: templates/client/client_detail.html:80
+msgid "Сумма всех услуг"
+msgstr "Барлық қызметтер сомасы"
+
+#: templates/client/client_detail.html:93
+msgid "Кол. оказ. услуг"
+msgstr "Көр. қызм. саны"
+
+#: templates/client/client_detail.html:114
+#: templates/salon/online-history.html:11
+msgid "История посещений"
+msgstr "Келу тарихы"
+
+#: templates/client/client_detail.html:128
+#: templates/salon/online-history.html:36
+msgid "Мастер"
+msgstr "Шебер"
+
+#: templates/client/client_detail.html:129
+#: templates/salon/online-history.html:39
+msgid "Время сеанса"
+msgstr "Сеанс уақыты"
+
+#: templates/client/client_detail.html:130 timetable/models.py:51
+msgid "Сумма"
+msgstr "Сомасы"
+
+#: templates/client/client_form.html:43 templates/client/client_form.html:60
+#: templates/client/client_list.html:79
+msgid "Добавить клиента"
+msgstr "Клиент қосу"
+
+#: templates/client/client_form.html:68 templates/salon/salon_info.html:68
+#: templates/staffer/position_form.html:68
+#: templates/staffer/staffer_new.html:92 templates/staffer/staffer_new.html:119
+#: templates/users/user_update_form.html:68
+msgid "Информация"
+msgstr "Ақпарат"
+
+#: templates/client/client_form.html:84 templates/salon/new_session.html:85
+#: templates/salon/online.html:205 templates/salon/salon_form.html:31
+#: templates/salon/salon_info.html:89 templates/salon/salon_info.html:101
+#: templates/services/category_list.html:153
+#: templates/services/service_form.html:84 templates/staffer/position.html:147
+#: templates/staffer/position_form.html:84
+#: templates/staffer/staffer_new.html:145
+#: templates/staffer/staffer_new.html:164 templates/users/user_form.html:30
+#: templates/users/user_update_form.html:89
+#: templates/users/user_update_form.html:101
+msgid "Отправить"
+msgstr "Жіберу"
+
+#: templates/client/client_list.html:63 templates/staffer/position.html:63
+#: templates/staffer/staffer_list.html:100
+msgid "Поиск"
+msgstr "Іздеу"
+
+#: templates/main.html:84 templates/main.html:120 templates/main.html:127
+msgid "Профиль"
+msgstr ""
+
+#: templates/main.html:134 templates/main.html:144
+msgid "Выход"
+msgstr "Шығу"
+
+#: templates/main.html:197
+msgid "Главный"
+msgstr "Басты бет"
+
+#: templates/main.html:263 templates/salon/salon_info.html:33
+#: templates/users/user_update_form.html:33
+msgid "Основные"
+msgstr "Негізгілер"
+
+#: templates/salon/invoice.html:14
+msgid "ОНЛАЙН ЗАПИСЬ"
+msgstr "ОНЛАЙН ЖАЗЫЛЫМ"
+
+#: templates/salon/invoice.html:26
+msgid "ДАТА"
+msgstr "КҮНІ"
+
+#: templates/salon/invoice.html:30
+msgid "ОНЛАЙН ЗАПИСЬ №"
+msgstr "ОНЛАЙН ЖАЗЫЛЫМ №"
+
+#: templates/salon/invoice.html:41
+msgid "УСЛУГА"
+msgstr "ҚЫЗМЕТ"
+
+#: templates/salon/invoice.html:42
+msgid "ОПИСАНИЕ"
+msgstr "СИПАТТАМАСЫ"
+
+#: templates/salon/invoice.html:43
+msgid "ЦЕНА"
+msgstr "БАҒАСЫ"
+
+#: templates/salon/invoice.html:59
+msgid "КЛИЕНТ"
+msgstr ""
+
+#: templates/salon/invoice.html:60
+msgid "ИМЯ"
+msgstr "ЕСІМІ"
+
+#: templates/salon/invoice.html:61
+msgid "ТЕЛЕФОН"
+msgstr ""
+
+#: templates/salon/invoice.html:62
+msgid "EMAIL"
+msgstr ""
+
+#: templates/salon/invoice.html:65
+msgid "ИТОГО"
+msgstr "БАРЛЫҒЫ"
+
+#: templates/salon/new_session.html:12 templates/salon/online.html:145
+#: templates/users/home.html:55
+msgid "Новый сеанс"
+msgstr "Жаңа сеанс"
+
+#: templates/salon/new_session.html:23
+msgid "Имя клиента"
+msgstr "Клиент есімі"
+
+#: templates/salon/new_session.html:26
+msgid "Полное имя клиента"
+msgstr "Клиенттің толық есімі"
+
+#: templates/salon/new_session.html:29
+msgid "Выбрать"
+msgstr "Таңдау"
+
+#: templates/salon/new_session.html:32
+msgid "Новый клиент"
+msgstr "Жаңа клиент"
+
+#: templates/salon/new_session.html:40
+#, fuzzy
+#| msgid "Введите имя клиента или выберите справа нажав кнопку \\"
+msgid " Введите имя клиента или выберите справа нажав кнопку \"Выбрать\"."
+msgstr "Клиент есімін енгізіңіз неме \"Таңдау\" батырмасын басып таңдаңыз."
+
+#: templates/salon/new_session.html:57 templates/salon/online.html:175
+msgid "Не имеет значения"
+msgstr "Маңызды емес"
+
+#: templates/salon/new_session.html:68 templates/salon/online.html:188
+#: templates/staffer/staffer_new.html:192
+#: templates/staffer/staffer_new.html:193
+msgid "Время"
+msgstr "Уақыт"
+
+#: templates/salon/new_session.html:80 templates/salon/online.html:200
+#: timetable/models.py:46
+msgid "Комментарии"
+msgstr "Пікір"
+
+#: templates/salon/online-history.html:19
+msgid "Нет записей"
+msgstr "Жазылым жоқ"
+
+#: templates/salon/online.html:109
+msgid "Онлайн запись"
+msgstr "Онлайн запись"
+
+#: templates/salon/online.html:117
+msgid "История записей"
+msgstr "Жазылым тарихы"
+
+#: templates/salon/online.html:156
+msgid "Ваше имя"
+msgstr "Сіздің есіміңіз"
+
+#: templates/salon/online.html:157
+msgid "Ваше полное имя"
+msgstr "Сіздің толық есіміңіз"
+
+#: templates/salon/salon_form.html:16
+msgid "Информация о салоне"
+msgstr "Салон жайлы ақпарат"
+
+#: templates/salon/salon_form.html:19
+#, fuzzy
+#| msgid "Введите данные о салоне:"
+msgid "Введите данные о салоне"
+msgstr "Салон жайлы ақпарат енгізіңіз"
+
+#: templates/salon/salon_form.html:35 templates/services/category_list.html:157
+#: templates/staffer/position.html:151 templates/users/user_form.html:34
+msgid "Отмена"
+msgstr "Болдырмау"
+
+#: templates/salon/salon_info.html:73 templates/staffer/staffer_new.html:124
+msgid "Доп. инфо"
+msgstr "Қос. ақпарат"
+
+#: templates/services/category_detail.html:33
+#: templates/services/category_list.html:33
+#: templates/services/category_list.html:48
+msgid "Категории услуг"
+msgstr "Қызметтер санаты"
+
+#: templates/services/category_detail.html:80
+msgid "Добавить услугу"
+msgstr "Қызмет қосу"
+
+#: templates/services/category_detail.html:118
+#: templates/services/category_list.html:109
+#: templates/staffer/position.html:111 templates/staffer/staffer_list.html:162
+#: templates/staffer/staffer_new.html:230
+msgid "Вы действительно хотите удалить?"
+msgstr "Сіз шынымен жойғыңыз келеді ме?"
+
+#: templates/services/category_detail.html:119
+#: templates/services/category_list.html:110
+#: templates/staffer/position.html:112 templates/staffer/staffer_list.html:163
+#: templates/staffer/staffer_new.html:231
+msgid "После удаления невозможно восстановить данные."
+msgstr "Жойғаннан кейін деректі қалпына келтіру мүмкін емес."
+
+#: templates/services/category_list.html:62
+#: templates/services/category_list.html:129
+msgid "Добавить категорию"
+msgstr "Санат қосу"
+
+#: templates/services/category_list.html:138
+#: templates/services/category_list.html:139
+msgid "Название на казахском"
+msgstr "Қазақша атауы"
+
+#: templates/services/category_list.html:142
+#: templates/services/category_list.html:143
+msgid "Название на русском"
+msgstr "Орысша атауы"
+
+#: templates/services/service_form.html:33
+msgid "Категория услуг"
+msgstr "Қызмет санаты"
+
+#: templates/services/service_form.html:41
+#: templates/services/service_form.html:54
+msgid "Новая услуга"
+msgstr "Жаңа қызмет"
+
+#: templates/staffer/position.html:79 templates/staffer/position.html:131
+msgid "Добавить должность"
+msgstr "Лауазым қосу"
+
+#: templates/staffer/staffer_list.html:48
+msgid "Список сотрудников"
+msgstr "Қызметкерлер тізімі"
+
+#: templates/staffer/staffer_list.html:68
+#: templates/staffer/staffer_list.html:88
+msgid "Все"
+msgstr "Барлығы"
+
+#: templates/staffer/staffer_list.html:89
+msgid "Уволенные"
+msgstr "Босатылғандар"
+
+#: templates/staffer/staffer_list.html:90
+msgid "Не уволенные"
+msgstr "Босатылмағандар"
+
+#: templates/staffer/staffer_list.html:116
+msgid "Добавить сотрудника"
+msgstr "Қызметкер қосу"
+
+#: templates/staffer/staffer_list.html:132
+msgid "Оказывает услуг"
+msgstr "Қызметі"
+
+#: templates/staffer/staffer_new.html:52 templates/staffer/staffer_new.html:110
+msgid "Новый сотрудник"
+msgstr "Жаңа қызметкер"
+
+#: templates/staffer/staffer_new.html:129
+msgid "Услуги и длительность"
+msgstr "Қызметтері және уақыты"
+
+#: templates/staffer/staffer_new.html:168
+msgid "Сотрудник не добавлен!"
+msgstr "Қызметкер қосылдымады!"
+
+#: templates/staffer/staffer_new.html:189
+msgid "Выберите услугу для мастера"
+msgstr "Шеберге қызмет таңдаңыз"
+
+#: templates/staffer/staffer_new.html:194
+msgid "Средняя длит. услуги(чч:мм)"
+msgstr "Қызметтің орташа ұзақ. (сс:мм)"
+
+#: templates/staffer/staffer_new.html:198
+msgid "Добавить"
+msgstr "Қосу"
+
+#: templates/staffer/staffer_new.html:208
+msgid "Длительность"
+msgstr "Ұзақтығы"
+
+#: templates/users/home.html:10 templates/users/home.html:24
+#: templates/users/home.html:44
+msgid "Журнал записи"
+msgstr "Жазылым журналы"
+
+#: templates/users/login.html:16
+msgid "Авторизация в систему"
+msgstr "Жүйеге авторизациялау"
+
+#: templates/users/login.html:25
+msgid "Пароль"
+msgstr ""
+
+#: templates/users/login.html:31
+msgid "Запомнить"
+msgstr "Есте сақтау"
+
+#: templates/users/login.html:37
+msgid "Восстановить пароль"
+msgstr "Парольді қалпына келтіру"
+
+#: templates/users/login.html:43
+msgid "Вход"
+msgstr "Кіру"
+
+#: templates/users/login.html:50
+msgid "У вас еще нет аккаунта?"
+msgstr "Сіз аккаунт жоқпа?"
+
+#: templates/users/login.html:54
+msgid "Регистрация"
+msgstr "Тіркелу"
+
+#: templates/users/user_form.html:16
+msgid "Регистрация пользователя"
+msgstr "Пайдаланушыны тіркеу"
+
+#: templates/users/user_form.html:19
+msgid "Введите свои данные для создания учетной записи:"
+msgstr "Тіркелу үшін өз деректеріңізді енгізіңіз:"
+
+#: templates/users/user_form.html:41
+#, fuzzy
+#| msgid "У вас еще нет аккаунта?"
+msgid "У вас есть аккаунт?"
+msgstr "Сізде аккаунт барма?"
+
+#: templates/users/user_form.html:45
+msgid "Авторизация"
+msgstr ""
+
+#: templates/users/user_update_form.html:73
+msgid "Изменение пароля"
+msgstr "Құпия сөзді өзгерту"
+
+#: timetable/models.py:14
+msgid "Онлайн"
+msgstr ""
+
+#: timetable/models.py:15
+msgid "Оффлайн"
+msgstr ""
+
+#: timetable/models.py:37
+msgid "Менеджер"
+msgstr ""
+
+#: timetable/models.py:40
+msgid "Начало сеанса"
+msgstr "Сеанс басталуы"
+
+#: timetable/models.py:43
+msgid "Завершение сеанса"
+msgstr "Сеанс аяқталуы"
+
+#: timetable/views.py:88
+msgid "Сеанс успешно добавлен."
+msgstr "Сеанс сәтті қосылды."
+
+#: timetable/views.py:139
+#, python-format
+msgid "Время: %s"
+msgstr "Уақыт: %s"
+
+#: users/models.py:24
+msgid "Информация о себе"
+msgstr "Өзі туралы ақпарат"
+
+#: users/models.py:29
+msgid "Номер мобильного"
+msgstr "Ұялы телефон нөмірі"
+
+#~ msgid "Фамилия"
+#~ msgstr "Тегіңіз"
+
+#~ msgid "Ваш номер"
+#~ msgstr "Сіздің нөміріңіз"
+
+#~ msgid "Подтверждение пароля"
+#~ msgstr "Құпия сөзді растау"

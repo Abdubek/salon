@@ -1,0 +1,177 @@
+{% extends "main.html" %}
+{% load i18n %}
+
+{% block main-content %}
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                {% trans "Настройки" %}
+            </h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a href="/" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            {% trans "Настройки" %}
+                        </span>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="{% url 'staffer:list' %}" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                           {% trans "Сотрудники" %}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="m-content">
+    <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        {% trans "Список сотрудников" %}
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet__body">
+
+            <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
+                <div class="row align-items-center">
+                    <div class="col-xl-8 order-2 order-xl-1">
+                        <div class="form-group m-form__group row align-items-center">
+                            <div class="col-md-4">
+                                <div class="m-form__group m-form__group--inline">
+                                    <div class="m-form__label">
+                                        <label>
+                                            {% trans "Должность" %}:
+                                        </label>
+                                    </div>
+                                    <div class="m-form__control">
+                                        <select class="form-control m-bootstrap-select" id="m_form_status">
+                                            <option value="0">{% trans "Все" %}</option>
+
+                                            {% for position in request.user.salon.positions.all %}
+                                                <option value="{{ position.id }}">{{ position.title }}</option>
+                                            {% endfor %}
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="d-md-none m--margin-bottom-10"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="m-form__group m-form__group--inline">
+                                    <div class="m-form__label">
+                                        <label class="m-label m-label--single">
+                                            {% trans "Статус" %}:
+                                        </label>
+                                    </div>
+                                    <div class="m-form__control">
+                                        <select class="form-control m-bootstrap-select" id="m_form_type">
+                                            <option value="">{% trans "Все" %}</option>
+                                            <option value="1">{% trans "Уволенные" %}</option>
+                                            <option value="2" selected>{% trans "Не уволенные" %}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="d-md-none m--margin-bottom-10"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <input  type="text"
+                                            class="form-control m-input"
+                                            placeholder="{% trans 'Поиск' %}..."
+                                            id="generalSearch">
+                                    <span class="m-input-icon__icon m-input-icon__icon--left">
+                                        <span>
+                                            <i class="la la-search"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                        <a href="{% url 'staffer:new' %}" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                            <span>
+                                <i class="la la-plus"></i>
+                                <span>
+                                    {% trans "Добавить сотрудника" %}
+                                </span>
+                            </span>
+                        </a>
+                        <div class="m-separator m-separator--dashed d-xl-none"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <table class="m-datatable staffer-datatable" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>{% trans "Статус" %}</th>
+                        <th>{% trans "Имя" %}</th>
+                        <th>{% trans "Должность" %}</th>
+                        <th>{% trans "Оказывает услуг" %}</th>
+                        <th>{% trans "Специализация" %}</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for staffer in object_list %}
+                    <tr>
+                        <td>{{ staffer.id }}</td>
+                        <td>
+                            <span>
+                            {% if staffer.master_fired %}
+                                <span class="m-badge m-badge--danger m-badge--wide">{{ staffer.master_fired.display_name }}</span>
+                            {% else %}
+                                <span class="m-badge m-badge--success m-badge--wide">{{ staffer.get_master_fired_display }}</span>
+                            {% endif %}
+                            </span>
+                        </td>
+                        <td>{{ staffer.full_name }}</td>
+                        <td>{{ staffer.position.title }}</td>
+                        <td>1</td>
+                        <td>{{ staffer.specialization }}</td>
+                        <td>
+                            <span style="overflow: visible; width: 110px;">
+                                <a href="{% url 'staffer:detail' staffer.id %}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details">
+                                    <i class="la la-edit"></i>
+                                </a>
+                                <a  href="{% url 'staffer:delete' staffer.id %}"
+                                    class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill delete-obj"
+                                    title="Delete"
+                                    data-title="{% trans 'Вы действительно хотите удалить?' %}"
+                                    data-text="{% trans 'После удаления невозможно восстановить данные.' %}"
+                                    >
+                                    <i class="la la-trash"></i>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
